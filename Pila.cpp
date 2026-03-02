@@ -65,7 +65,7 @@ void Pila::Agregar(int nuevoValor)
 
     }catch(std::bad_alloc&){
         // PENDIENTE: Lanzar una excepcion propia de la
-        throw "Error: Memoria no disponible";
+        throw PilaNoMemoria();
     }
 }
 
@@ -152,8 +152,17 @@ Pila::PilaVacia::PilaVacia() throw() {}
 
 //***********************************
 
+Pila::PilaNoMemoria::PilaNoMemoria() throw(){}
+
+//***********************************
+
 const char *Pila::PilaVacia::what() const throw()
 {
     return "La pila se encuentra vac\241a.";
 }
 
+
+const char *Pila::PilaNoMemoria::what() const throw()
+{
+    return "No hay memoria disponible.";
+}
