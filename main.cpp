@@ -1,4 +1,7 @@
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
+
 #include "Pila.hpp"
 
 using namespace std;
@@ -6,17 +9,30 @@ using namespace std;
 int main()
 {
     try{
-
-        cout << "Probando la excepci\242n de pila vac\241a:\n";
+        srand(time(nullptr));
 
         Pila a;
-        a.ObtenerTope();
+        int valor, n = 10+rand()%11;
 
-        cout << "Probando la excepci\242n de memoria no disponible:\n";
-        cout <<"no esa no";
+        cout << "Agregando " << n << " valores a la pila..." << endl;
 
+        for(int i = 1 ; i <= n ; ++i){
+            valor = 1 + rand()%100;
+            cout << "Agregando " << valor << " a la pila p..." << endl;
+            a.Agregar(valor);
+            a.Imprimir();
+        }
 
+        n = 5 + rand()%6;
 
+        cout << "Eliminando " << n << " valores de la pila p..." << endl;
+        for(int i = 1 ; i <= n ; ++i){
+            cout << "\nEliminando un valor de la pila p\n";
+            a.Eliminar();
+            a.Imprimir();
+        }
+
+    }catch(const char *msn){
 
     }catch(Pila::PilaVacia &errorVacio){
         cerr << "Error en la pila: " << errorVacio.what() << endl;

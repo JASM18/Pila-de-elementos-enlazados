@@ -29,9 +29,38 @@ Pila::Pila(const Pila& pila) : numElem(0), tope(nullptr)
 
 Pila& Pila::operator=(const Pila& pila)
 {
-    if (this == &pila) return *this;
+//
+//    if (this == &pila) return *this; // Evita la auto-asignación (Pila A = Pila A)
+//
+//    this->Vaciar();
+//
+//    if(pila.EstaVacia()){
+//        return *this;
+//    }
+//
+//    // Se va a crear el elemento de tope de forma manual (paso inicial)
+//    Elemento *actualElem = pila.tope; // Puntero auxuliar
+//
+//    this->tope = new Elemento; // Creamos el nuevo tope de *this
+//    this->tope->valor = actualElem.valor;
+//    this->tope->siguiente = nullptr; // Por ahora el puntero de siguiente no apunta a nada
+//    this->numElem = 1;
+//    // Hasta ahora solamente hemos copiado el elemento tope
+//
+//
+//    Elemento *ultimoVisitado = this->tope;
+//
+//    actualElem = actualElem->siguiente; // Visitamos el siguiente elemento de &pila
+//
+//    while(actualElem != nullptr){
+//        ultimoVisitado->siguiente = new Elemento; // Se crea la siguiente caja para el *this
+//
+//
+//
+//    }
 
-    this->Vaciar();
+
+    /*
 
     Pila pilaAux;
     Elemento *visitado = pila.tope;
@@ -46,7 +75,7 @@ Pila& Pila::operator=(const Pila& pila)
         this->Agregar(visitado->valor);
         visitado = visitado->siguiente;
     }
-
+    */
     return *this;
 }
 

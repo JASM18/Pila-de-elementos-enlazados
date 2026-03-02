@@ -87,11 +87,11 @@ public:
 
     class PilaNoMemoria : public std::exception {
     public:
-        /** \brief Constructor por defecto de la excepci&oacute;n PilaVacia.
+        /** \brief Constructor por defecto de la excepci&oacute;n PilaNoMemoria.
          */
         PilaNoMemoria() throw();
 
-        /** \brief Devuelve una descripci&oacute;n del error al intentar operar con una pila vac&iacute;a.
+        /** \brief Devuelve una descripci&oacute;n del error cuando no haya memoria disponible.
          *
          * \return Cadena de caracteres con el mensaje de error.
          */
