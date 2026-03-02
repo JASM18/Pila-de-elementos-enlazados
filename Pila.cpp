@@ -29,8 +29,7 @@ Pila::Pila(const Pila& pila) : numElem(0), tope(nullptr)
 
 Pila& Pila::operator=(const Pila& pila)
 {
-    if (this == &pila) return *this; // handle self assignment
-    //assignment operator
+    if (this == &pila) return *this;
 
     this->Vaciar();
 
@@ -76,7 +75,7 @@ void Pila::Eliminar()
 {
     if(EstaVacia()){
         // PENDIENTE: Lanzar una excepcion propia de la pila
-        throw "Pila vac\241a";
+        throw PilaVacia();
     }
     Elemento *porBorrar = tope;
     tope = tope->siguiente;
@@ -90,7 +89,7 @@ int Pila::ObtenerTope() const
 {
     if(EstaVacia()){
         // PENDIENTE: Lanzar una excepcion propia de la pila
-        throw "Pila vac\241a";
+        throw PilaVacia();
     }
 
     return tope->valor;
