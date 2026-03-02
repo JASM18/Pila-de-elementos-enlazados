@@ -1,6 +1,7 @@
 #ifndef PILA_HPP
 #define PILA_HPP
 
+#include <exception>
 
 class Pila {
 public:
@@ -70,6 +71,19 @@ public:
      *
      */
     void Imprimir();
+
+    class PilaVacia : public std::exception {
+    public:
+        /** \brief Constructor por defecto de la excepci&oacute;n PilaVacia.
+         */
+        PilaVacia() throw();
+
+        /** \brief Devuelve una descripci&oacute;n del error al intentar operar con una pila vac&iacute;a.
+         *
+         * \return Cadena de caracteres con el mensaje de error.
+         */
+        virtual const char *what() const throw();
+    };
 
 private:
 

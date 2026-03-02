@@ -9,11 +9,12 @@ int main()
 
         Pila a;
 
-        a.Agregar(67);
+        a.ObtenerTope();
 
-        a.Imprimir();
-
+    }catch(Pila::PilaVacia &errorVacio){
+        cerr << "Error en la pila: " << errorVacio.what() << endl;
     }catch(...){
+        cerr << "Ocurri\242 un error inesperado." << endl;
     }
 
     return 0;

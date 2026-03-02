@@ -1,5 +1,5 @@
 #include <iostream>
-#include <exception>
+
 #include "Pila.hpp"
 
 //*****************************************
@@ -144,3 +144,17 @@ void Pila::Imprimir()
 
     if(!EstaVacia()) std::cout << "\b\b <- Inicio";
 }
+
+//***********************************
+// Implementación de la clase PilaVacia
+//***********************************
+
+Pila::PilaVacia::PilaVacia() throw() {}
+
+//***********************************
+
+const char *Pila::PilaVacia::what() const throw()
+{
+    return "La pila se encuentra vac\241a.";
+}
+
