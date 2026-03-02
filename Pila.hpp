@@ -104,7 +104,9 @@ private:
     struct Elemento{
         int valor;
         Elemento *siguiente;
-    } *tope; //!< Member variable "*tope";
+        Elemento(int val, Elemento *sig); // Constructor de Elemento
+    };
+    Elemento *tope; //!< Member variable "*tope";
 };
 
 #endif // PILA_HPP

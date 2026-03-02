@@ -2,14 +2,14 @@
 1584205420 source:c:\users\axel\desktop\4to semestre\estructura de datos\clase\piladeelementosenlazados\main.cpp
 	<iostream>
 
-1772467921 source:c:\users\axel\desktop\4to semestre\estructura de datos\clase\pila-de-elementos-enlazados\pila.cpp
+1772472120 source:c:\users\axel\desktop\4to semestre\estructura de datos\clase\pila-de-elementos-enlazados\pila.cpp
 	<iostream>
 	"Pila.hpp"
 
-1772464876 c:\users\axel\desktop\4to semestre\estructura de datos\clase\pila-de-elementos-enlazados\pila.hpp
+1772469773 c:\users\axel\desktop\4to semestre\estructura de datos\clase\pila-de-elementos-enlazados\pila.hpp
 	<exception>
 
-1772467788 source:c:\users\axel\desktop\4to semestre\estructura de datos\clase\pila-de-elementos-enlazados\main.cpp
+1772469410 source:c:\users\axel\desktop\4to semestre\estructura de datos\clase\pila-de-elementos-enlazados\main.cpp
 	<iostream>
 	<cstdlib>
 	<ctime>

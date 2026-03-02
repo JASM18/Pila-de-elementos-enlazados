@@ -29,36 +29,51 @@ Pila::Pila(const Pila& pila) : numElem(0), tope(nullptr)
 
 Pila& Pila::operator=(const Pila& pila)
 {
-//
-//    if (this == &pila) return *this; // Evita la auto-asignación (Pila A = Pila A)
-//
-//    this->Vaciar();
-//
-//    if(pila.EstaVacia()){
-//        return *this;
-//    }
-//
-//    // Se va a crear el elemento de tope de forma manual (paso inicial)
-//    Elemento *actualElem = pila.tope; // Puntero auxuliar
-//
-//    this->tope = new Elemento; // Creamos el nuevo tope de *this
-//    this->tope->valor = actualElem.valor;
-//    this->tope->siguiente = nullptr; // Por ahora el puntero de siguiente no apunta a nada
-//    this->numElem = 1;
-//    // Hasta ahora solamente hemos copiado el elemento tope
-//
-//
-//    Elemento *ultimoVisitado = this->tope;
-//
-//    actualElem = actualElem->siguiente; // Visitamos el siguiente elemento de &pila
-//
-//    while(actualElem != nullptr){
-//        ultimoVisitado->siguiente = new Elemento; // Se crea la siguiente caja para el *this
-//
-//
-//
-//    }
 
+    if (this == &pila) return *this; // Evita la auto-asignación (Pila A = Pila A)
+
+    this->Vaciar();
+
+    if(pila.EstaVacia()){
+        return *this;
+    }
+
+    try{
+        // Se va a crear el elemento de tope de forma manual (paso inicial)
+        // visitaPila va a ser un puntero que recorre todos los elementos de &pila
+        // visitaThis va a ser un puntero que recorre todos los elementos de *this
+        // Ejemplo: Pila a = b -----> en este contexto, *this es la pila a y &pila es la pila b
+
+        Elemento *visitaPila = pila.tope; // Puntero auxuliar que recorre &pila
+
+        this->tope = new Elemento(visitaPila->valor, nullptr); // Creamos el nuevo tope de *this
+
+        this->numElem = 1;
+        // Hasta ahora solamente hemos copiado el elemento tope
+
+        Elemento *visitaThis = this->tope; // Puntero que apunta al tope de la pila *this
+
+        visitaPila = visitaPila->siguiente; // Visitamos el siguiente elemento de &pila
+
+        while(visitaPila != nullptr){ // Se ejecuta hasta que el puntero sea nulo, osea hasta que recorremos toda la pila &pila
+
+            // Creamos el siguiente elemento de *this
+            visitaThis->siguiente = new Elemento(visitaPila->valor, nullptr);
+
+            // Bajamos el puntero de *this
+            visitaThis = visitaThis->siguiente;
+            this->numElem++;
+
+            // Bajamos el puntero de &pila
+            visitaPila = visitaPila->siguiente;
+
+        }
+
+
+    }catch(const std::bad_alloc&){
+        this->Vaciar();
+        throw PilaNoMemoria();
+    }
 
     /*
 
@@ -86,14 +101,13 @@ Pila& Pila::operator=(const Pila& pila)
 void Pila::Agregar(int nuevoValor)
 {
     try{
-        Elemento *nuevo = new Elemento; // Vamos a crear un nuevo elemento
-        nuevo->valor = nuevoValor;
-        nuevo->siguiente = tope;
+        Elemento *nuevo = new Elemento(nuevoValor, tope); // Vamos a crear un nuevo elemento
+        //nuevo->valor = nuevoValor;
+        //nuevo->siguElementoiente = tope;
         tope = nuevo;
         ++numElem;
 
     }catch(std::bad_alloc&){
-        // PENDIENTE: Lanzar una excepcion propia de la
         throw PilaNoMemoria();
     }
 }
@@ -172,6 +186,12 @@ void Pila::Imprimir()
 
     if(!EstaVacia()) std::cout << "\b\b <- Inicio";
 }
+
+//***********************************
+// Métodos de la estructura Elemento
+//***********************************
+
+Pila::Elemento::Elemento(int v, Elemento *sig /*=nullptr*/) : valor(v), siguiente(sig){}
 
 //***********************************
 // Implementación de la clase PilaVacia
