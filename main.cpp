@@ -7,9 +7,13 @@ int main()
 {
     try{
 
+        Pila a;
 
+        a.Agregar(67);
 
-    }catch(){
+        a.Imprimir();
+
+    }catch(...){
     }
 
     return 0;
