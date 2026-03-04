@@ -75,7 +75,7 @@ Pila& Pila::operator=(const Pila& pila)
             visitado = visitado->siguiente;
             aux = *(*aux)->siguiente;
         }
-        */  <
+        */
 
     }catch(const std::bad_alloc&){
         this->Vaciar();
