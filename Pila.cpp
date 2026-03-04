@@ -45,14 +45,12 @@ Pila& Pila::operator=(const Pila& pila)
         // Ejemplo: Pila a = b -----> en este contexto, *this es la pila a y &pila es la pila b
 
         Elemento *visitaPila = pila.tope; // Puntero auxuliar que recorre &pila
-
         this->tope = new Elemento(visitaPila->valor, nullptr); // Creamos el nuevo tope de *this
 
         this->numElem = 1;
         // Hasta ahora solamente hemos copiado el elemento tope
 
         Elemento *visitaThis = this->tope; // Puntero que apunta al tope de la pila *this
-
         visitaPila = visitaPila->siguiente; // Visitamos el siguiente elemento de &pila
 
         while(visitaPila != nullptr){ // Se ejecuta hasta que el puntero sea nulo, osea hasta que recorremos toda la pila &pila
@@ -69,6 +67,15 @@ Pila& Pila::operator=(const Pila& pila)
 
         }
 
+        /*
+        Elemento **aux = &tope;
+        Elemento *visitado = p.tope;
+        while(visitado !=  nullptr){
+            *aux = new Elemento(visitado->valor);
+            visitado = visitado->siguiente;
+            aux = *(*aux)->siguiente;
+        }
+        */  <
 
     }catch(const std::bad_alloc&){
         this->Vaciar();

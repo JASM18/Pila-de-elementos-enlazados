@@ -37,10 +37,9 @@ int main()
 
         cout << "\nLa pila" << (p.EstaVacia()? " " : " no ") << "est\240 vac\241a" << endl;
 
-        cout << "\nVaciando la pila..." << endl;
+        //cout << "\nVaciando la pila..." << endl;
         //p.Vaciar();
-
-        cout << "\nLa pila" << (p.EstaVacia()? " " : " no ") << "est\240 vac\241a" << endl;
+        //cout << "\nLa pila" << (p.EstaVacia()? " " : " no ") << "est\240 vac\241a" << endl;
 
 
         Pila q = p;
@@ -60,7 +59,7 @@ int main()
         cout << "\nPila q:";
         q.Imprimir();
 
-        cout << "\nVaciando la pila p..." << endl;
+        cout << "\n\nVaciando la pila p..." << endl;
         p.Vaciar();
 
         cout << "\nLa pila" << (p.EstaVacia()? " " : " no ") << "est\240 vac\241a" << endl;
