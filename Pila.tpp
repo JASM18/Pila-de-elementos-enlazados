@@ -1,33 +1,35 @@
 #include <iostream>
 
-#include "Pila.hpp"
-
 //*****************************************
 // CONSTRUCTORES
 //*****************************************
 
-Pila::Pila() : numElem(0), tope(nullptr)
+template <typename T>
+Pila<T>::Pila() : numElem(0), tope(nullptr)
 {
 
 }
 
 //*****************************************
 
-Pila::~Pila()
+template <typename T>
+Pila<T>::~Pila()
 {
     Vaciar();
 }
 
 //*****************************************
 
-Pila::Pila(const Pila& pila) : numElem(0), tope(nullptr)
+template <typename T>
+Pila<T>::Pila(const Pila& pila) : numElem(0), tope(nullptr)
 {
     *this = pila;
 }
 
 //*****************************************
 
-Pila& Pila::operator=(const Pila& pila)
+template <typename T>
+Pila<T>& Pila<T>::operator=(const Pila& pila)
 {
 
     if (this == &pila) return *this; // Evita la auto-asignación (Pila A = Pila A)
@@ -67,37 +69,11 @@ Pila& Pila::operator=(const Pila& pila)
 
         }
 
-        /*
-        Elemento **aux = &tope;
-        Elemento *visitado = p.tope;
-        while(visitado !=  nullptr){
-            *aux = new Elemento(visitado->valor);
-            visitado = visitado->siguiente;
-            aux = *(*aux)->siguiente;
-        }
-        */
-
     }catch(const std::bad_alloc&){
         this->Vaciar();
         throw PilaNoMemoria();
     }
 
-    /*
-
-    Pila pilaAux;
-    Elemento *visitado = pila.tope;
-
-    while(visitado != nullptr){
-        pilaAux.Agregar(visitado->valor);
-        visitado = visitado->siguiente;
-    }
-
-    visitado = pilaAux.tope;
-    while(visitado != nullptr){
-        this->Agregar(visitado->valor);
-        visitado = visitado->siguiente;
-    }
-    */
     return *this;
 }
 
@@ -105,7 +81,8 @@ Pila& Pila::operator=(const Pila& pila)
 // MÉTODOS DE CLASE
 //*****************************************
 
-void Pila::Agregar(int nuevoValor)
+template <typename T>
+void Pila<T>::Agregar(T nuevoValor)
 {
     try{
         Elemento *nuevo = new Elemento(nuevoValor, tope); // Vamos a crear un nuevo elemento
@@ -121,7 +98,8 @@ void Pila::Agregar(int nuevoValor)
 
 //*****************************************
 
-void Pila::Eliminar()
+template <typename T>
+void Pila<T>::Eliminar()
 {
     if(EstaVacia()){
         // PENDIENTE: Lanzar una excepcion propia de la pila
@@ -135,7 +113,8 @@ void Pila::Eliminar()
 
 //*****************************************
 
-int Pila::ObtenerTope() const
+template <typename T>
+T Pila<T>::ObtenerTope() const
 {
     if(EstaVacia()){
         // PENDIENTE: Lanzar una excepcion propia de la pila
@@ -147,32 +126,28 @@ int Pila::ObtenerTope() const
 
 //*****************************************
 
-int Pila::ObtenerTam() const
+template <typename T>
+int Pila<T>::ObtenerTam() const
 {
     return numElem;
 }
 
 //*****************************************
 
-bool Pila::EstaVacia() const
+template <typename T>
+bool Pila<T>::EstaVacia() const
 {
     if(numElem == 0){
         return true;
     }
 
     return false;
-
-
-//    if(tope == nullptr){
-//        return true;
-//    }
-//
-//    return false;
 }
 
 //*****************************************
 
-void Pila::Vaciar()
+template <typename T>
+void Pila<T>::Vaciar()
 {
     while(!EstaVacia()){
         Eliminar();
@@ -181,7 +156,8 @@ void Pila::Vaciar()
 
 //*****************************************
 
-void Pila::Imprimir()
+template <typename T>
+void Pila<T>::Imprimir()
 {
     Elemento *visitado = tope;
     std::cout << "Tope-> ";
@@ -198,27 +174,33 @@ void Pila::Imprimir()
 // Métodos de la estructura Elemento
 //***********************************
 
-Pila::Elemento::Elemento(int v, Elemento *sig /*=nullptr*/) : valor(v), siguiente(sig){}
+template <typename T>
+Pila<T>::Elemento::Elemento(T v, Elemento *sig /*=nullptr*/) : valor(v), siguiente(sig){}
 
 //***********************************
 // Implementación de la clase PilaVacia
 //***********************************
 
-Pila::PilaVacia::PilaVacia() throw() {}
+template <typename T>
+Pila<T>::PilaVacia::PilaVacia() throw() {}
 
 //***********************************
 
-Pila::PilaNoMemoria::PilaNoMemoria() throw(){}
+template <typename T>
+Pila<T>::PilaNoMemoria::PilaNoMemoria() throw(){}
 
 //***********************************
 
-const char *Pila::PilaVacia::what() const throw()
+template <typename T>
+const char *Pila<T>::PilaVacia::what() const throw()
 {
     return "La pila se encuentra vac\241a.";
 }
 
+//***********************************
 
-const char *Pila::PilaNoMemoria::what() const throw()
+template <typename T>
+const char *Pila<T>::PilaNoMemoria::what() const throw()
 {
     return "No hay memoria disponible.";
 }

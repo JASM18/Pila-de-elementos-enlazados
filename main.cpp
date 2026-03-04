@@ -11,7 +11,7 @@ int main()
     try{
         srand(time(nullptr));
 
-        Pila p;
+        Pila<int> p;
         int valor, n = 10+rand()%11;
 
         cout << "Agregando " << n << " valores a la pila..." << endl;
@@ -42,7 +42,7 @@ int main()
         //cout << "\nLa pila" << (p.EstaVacia()? " " : " no ") << "est\240 vac\241a" << endl;
 
 
-        Pila q = p;
+        Pila<int> q = p;
 
         q.Agregar(10);
         q.Agregar(-5);
@@ -73,7 +73,7 @@ int main()
 
     }catch(const char *msn){
 
-    }catch(Pila::PilaVacia &errorVacio){
+    }catch(Pila<int>::PilaVacia &errorVacio){
         cerr << "Error en la pila: " << errorVacio.what() << endl;
     }catch(...){
         cerr << "Ocurri\242 un error inesperado." << endl;

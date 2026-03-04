@@ -6,10 +6,11 @@
 	<iostream>
 	"Pila.hpp"
 
-1772469773 c:\users\axel\desktop\4to semestre\estructura de datos\clase\pila-de-elementos-enlazados\pila.hpp
+1772653708 c:\users\axel\desktop\4to semestre\estructura de datos\clase\pila-de-elementos-enlazados\pila.hpp
 	<exception>
+	"Pila.tpp"
 
-1772472938 source:c:\users\axel\desktop\4to semestre\estructura de datos\clase\pila-de-elementos-enlazados\main.cpp
+1772654048 source:c:\users\axel\desktop\4to semestre\estructura de datos\clase\pila-de-elementos-enlazados\main.cpp
 	<iostream>
 	<cstdlib>
 	<ctime>
@@ -25,4 +26,7 @@
 1772429264 source:e:\github\pila-de-elementos-enlazados-main\pila-de-elementos-enlazados\pila.cpp
 	<iostream>
 	"Pila.hpp"
+
+1772654018 c:\users\axel\desktop\4to semestre\estructura de datos\clase\pila-de-elementos-enlazados\pila.tpp
+	<iostream>
 

@@ -3,6 +3,7 @@
 
 #include <exception>
 
+template <typename T = std::string>
 class Pila {
 public:
     /** Default constructor */
@@ -24,11 +25,11 @@ public:
 
     /** \brief Agrega un elemento al tope de la pila
      *
-     * \param valor int
+     * \param valor T
      * \return void
      *
      */
-    void Agregar(int valor);
+    void Agregar(T valor);
 
     /** \brief Elimina el tope de la pila
      *
@@ -39,10 +40,10 @@ public:
 
     /** \brief Obtiene el valor del tope de la pila
      *
-     * \return int
+     * \return T
      *
      */
-    int ObtenerTope() const;
+    T ObtenerTope() const;
 
     /** \brief Regresa la cantidad de elementos que hay en la pila
      *
@@ -102,11 +103,13 @@ private:
 
     int numElem; //!< Member variable "numElem"
     struct Elemento{
-        int valor;
+        T valor;
         Elemento *siguiente;
-        Elemento(int val, Elemento *sig); // Constructor de Elemento
+        Elemento(T val, Elemento *sig); // Constructor de Elemento
     };
     Elemento *tope; //!< Member variable "*tope";
 };
+
+#include "Pila.tpp"
 
 #endif // PILA_HPP
